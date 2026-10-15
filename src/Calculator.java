@@ -15,6 +15,8 @@ public class Calculator {
     Color lightBlue = new Color(162,187,207);
 
     JFrame frame = new JFrame("Calculator - by Michael Panica"); // Sets the title of the application.
+    JLabel displayLabel = new JLabel();
+    JPanel displayPanel = new JPanel();
 
     Calculator(){
         frame.setVisible(true); // Sets the visibility to True, so that the app can be seen.
@@ -23,5 +25,16 @@ public class Calculator {
         frame.setResizable(false); // Sets the resizable to false, so that the user can't resize the window.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the application completely when the user clicks the window's close button.
         frame.setLayout(new BorderLayout()); // Sets the frame's layout manager to BorderLayout, allowing components to be placed in NORTH, SOUTH, EAST, WEST, or CENTER regions.
+
+        displayLabel.setBackground(black); // Sets the background color of the displayLabel as black (value set on line 12)
+        displayLabel.setForeground(Color.white); // Sets the text color in the displayLabel as white (value not previously defined, hence I use Color.white)
+        displayLabel.setFont(new Font("Arial", Font.PLAIN, 80)); // Sets the font in the displayLabel as Arial with the size of 80 pixels.
+        displayLabel.setHorizontalAlignment(JLabel.RIGHT); // Align the text in displayLabel to the right.
+        displayLabel.setText("0"); // Sets a default text as 0.
+        displayLabel.setOpaque(true); //Sets opacity as true.
+
+        displayPanel.setLayout(new BorderLayout());
+        displayPanel.add(displayLabel); // Puts the displayLabel inside the displayPanel.
+        frame.add(displayPanel); // Puts the Panel in the app window.
     }
 }
