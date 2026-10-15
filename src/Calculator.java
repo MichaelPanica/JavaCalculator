@@ -10,9 +10,9 @@ public class Calculator {
 
     // The following 4 lines represent the colours I will use to customize my calculator.
     Color black = new Color(40,40,40);
-    Color blue = new Color(32,91,122);
-    Color darkBlue = new Color(20,47,68);
-    Color lightBlue = new Color(162,187,207);
+    Color orange = new Color(255,183,0);
+    Color grey = new Color(66,66,66 );
+    Color darkGrey = new Color(33, 33, 33);
 
     // Create the grid for the buttons in arrays. (Ends on line 26 included)
     String[] buttonValues = { // Array of all the buttons.
@@ -49,7 +49,7 @@ public class Calculator {
         displayPanel.add(displayLabel); // Puts the displayLabel inside the displayPanel.
         frame.add(displayPanel, BorderLayout.NORTH); // Puts the Panel in the app window. Also moved the location of the panel to the NORTH, so that the text appears on top instead of center on Y axis.
         buttonsPanel.setLayout(new GridLayout(5, 4)); // Creates a Grid Layout inside the calculator with 5 rows and 4 columns.
-        buttonsPanel.setBackground(darkBlue); //Sets the buttonsPanel background color to dark blue.
+        buttonsPanel.setBackground(darkGrey); //Sets the buttonsPanel background color to dark blue.
         frame.add(buttonsPanel); // Adds the buttonsPanel to the frame of the calculator.
 
         for (int i = 0; i < buttonValues.length; i++){
@@ -58,8 +58,19 @@ public class Calculator {
             String buttonValue = buttonValues[i];
             button.setFont(new Font("Arial", Font.PLAIN, 30)); // Sets the font as Arial, Plain, size 30px
             button.setText(buttonValue); // Sets the value for each button for the value defined in the string.
-            buttonsPanel.add(button); // Adds the button to the panel.
             button.setFocusable(false); // Disables the rectangle on buttons when they are pressed.
+            button.setBorder(new LineBorder(black));
+            if (Arrays.asList(topSymbols).contains(buttonValue)){
+                button.setBackground(darkGrey);
+                button.setForeground(Color.WHITE);
+            } else if (Arrays.asList(rightSymbols).contains(buttonValue)){
+                button.setBackground(orange);
+                button.setForeground(Color.WHITE);
+            } else {
+                button.setBackground(grey);
+                button.setForeground(Color.WHITE);
+            }
+            buttonsPanel.add(button); // Adds the button to the panel.
         }
         frame.revalidate(); // Revalidates the frame to avoid missing buttons.
     }
