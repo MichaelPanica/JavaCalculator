@@ -59,6 +59,7 @@ public class Calculator {
             button.setFont(new Font("Arial", Font.PLAIN, 30)); // Sets the font as Arial, Plain, size 30px
             button.setText(buttonValue); // Sets the value for each button for the value defined in the string.
             buttonsPanel.add(button); // Adds the button to the panel.
+            button.setFocusable(false); // Disables the rectangle on buttons when they are pressed.
         }
         frame.revalidate(); // Revalidates the frame to avoid missing buttons.
     }
