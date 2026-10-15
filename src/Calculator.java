@@ -14,9 +14,21 @@ public class Calculator {
     Color darkBlue = new Color(20,47,68);
     Color lightBlue = new Color(162,187,207);
 
+    // Create the grid for the buttons in arrays. (Ends on line 26 included)
+    String[] buttonValues = { // Array of all the buttons.
+            "AC", "+/-", "%", "÷",
+            "7", "8", "9", "×",
+            "4", "5", "6", "-",
+            "1", "2", "3", "+",
+            "0", ".", "√", "="
+    };
+    String[] rightSymbols = {"÷", "×", "-", "+", "="}; //The buttons on the right side of the calculator.
+    String[] topSymbols = {"AC", "+/-", "%"}; // The buttons on the top side of the calculator.
+
     JFrame frame = new JFrame("Calculator - by Michael Panica"); // Sets the title of the application.
     JLabel displayLabel = new JLabel();
     JPanel displayPanel = new JPanel();
+    JPanel buttonsPanel = new JPanel();
 
     Calculator(){
         frame.setVisible(true); // Sets the visibility to True, so that the app can be seen.
@@ -36,5 +48,8 @@ public class Calculator {
         displayPanel.setLayout(new BorderLayout());
         displayPanel.add(displayLabel); // Puts the displayLabel inside the displayPanel.
         frame.add(displayPanel, BorderLayout.NORTH); // Puts the Panel in the app window. Also moved the location of the panel to the NORTH, so that the text appears on top instead of center on Y axis.
+        buttonsPanel.setLayout(new GridLayout(5, 4)); // Creates a Grid Layout inside the calculator with 5 rows and 4 columns.
+        buttonsPanel.setBackground(darkBlue); //Sets the buttonsPanel background color to dark blue.
+        frame.add(buttonsPanel); // Adds the buttonsPanel to the frame of the calculator.
     }
 }
