@@ -35,6 +35,6 @@ public class Calculator {
 
         displayPanel.setLayout(new BorderLayout());
         displayPanel.add(displayLabel); // Puts the displayLabel inside the displayPanel.
-        frame.add(displayPanel); // Puts the Panel in the app window.
+        frame.add(displayPanel, BorderLayout.NORTH); // Puts the Panel in the app window. Also moved the location of the panel to the NORTH, so that the text appears on top instead of center on Y axis.
     }
 }
