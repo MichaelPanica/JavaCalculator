@@ -51,5 +51,15 @@ public class Calculator {
         buttonsPanel.setLayout(new GridLayout(5, 4)); // Creates a Grid Layout inside the calculator with 5 rows and 4 columns.
         buttonsPanel.setBackground(darkBlue); //Sets the buttonsPanel background color to dark blue.
         frame.add(buttonsPanel); // Adds the buttonsPanel to the frame of the calculator.
+
+        for (int i = 0; i < buttonValues.length; i++){
+            JButton button = new JButton();
+
+            String buttonValue = buttonValues[i];
+            button.setFont(new Font("Arial", Font.PLAIN, 30)); // Sets the font as Arial, Plain, size 30px
+            button.setText(buttonValue); // Sets the value for each button for the value defined in the string.
+            buttonsPanel.add(button); // Adds the button to the panel.
+        }
+        frame.revalidate(); // Revalidates the frame to avoid missing buttons.
     }
 }
