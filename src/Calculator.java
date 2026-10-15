@@ -9,7 +9,7 @@ public class Calculator {
     int borderHeight = 540; // Set the height of the application - 540 pixels.
 
     // The following 4 lines represent the colours I will use to customize my calculator.
-    Color black = new Color(0,0,0);
+    Color black = new Color(40,40,40);
     Color blue = new Color(32,91,122);
     Color darkBlue = new Color(20,47,68);
     Color lightBlue = new Color(162,187,207);
