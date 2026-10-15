@@ -52,26 +52,32 @@ public class Calculator {
         buttonsPanel.setBackground(darkGrey); //Sets the buttonsPanel background color to dark blue.
         frame.add(buttonsPanel); // Adds the buttonsPanel to the frame of the calculator.
 
-        for (int i = 0; i < buttonValues.length; i++){
-            JButton button = new JButton();
-
-            String buttonValue = buttonValues[i];
-            button.setFont(new Font("Arial", Font.PLAIN, 30)); // Sets the font as Arial, Plain, size 30px
-            button.setText(buttonValue); // Sets the value for each button for the value defined in the string.
-            button.setFocusable(false); // Disables the rectangle on buttons when they are pressed.
-            button.setBorder(new LineBorder(black));
-            if (Arrays.asList(topSymbols).contains(buttonValue)){
-                button.setBackground(darkGrey);
-                button.setForeground(Color.WHITE);
-            } else if (Arrays.asList(rightSymbols).contains(buttonValue)){
-                button.setBackground(orange);
-                button.setForeground(Color.WHITE);
-            } else {
-                button.setBackground(grey);
-                button.setForeground(Color.WHITE);
-            }
-            buttonsPanel.add(button); // Adds the button to the panel.
+        for (int i = 0; i < buttonValues.length; i++) { // Loop through every value in the buttonValues array.
+            JButton button = createButton(i);
+            buttonsPanel.add(button); // Add the configured button to the buttons panel.
         }
         frame.revalidate(); // Revalidates the frame to avoid missing buttons.
+    }
+
+    private JButton createButton(int i) {
+        JButton button = new JButton(); // Create a new JButton object.
+        String buttonValue = buttonValues[i]; // Get the current button value from the array.
+
+        button.setFont(new Font("Arial", Font.PLAIN, 30)); // Set the button text font to Arial, plain style, size 30.
+        button.setText(buttonValue); // Set the button's displayed text.
+        button.setFocusable(false); // Disable the focus highlight that appears when the button is selected.
+        button.setBorder(new LineBorder(black)); // Set the button border color to black.
+
+        if (Arrays.asList(topSymbols).contains(buttonValue)) { // Check if the button belongs to the top row operators (e.g. C, ±, %).
+            button.setBackground(darkGrey); // Set the button background to dark grey.
+            button.setForeground(Color.WHITE); // Set the button text color to white.
+        } else if (Arrays.asList(rightSymbols).contains(buttonValue)) { // Check if the button belongs to the right-side operators (e.g. ÷, ×, -, +, =).
+            button.setBackground(orange); // Set the button background to orange.
+            button.setForeground(Color.WHITE); // Set the button text color to white.
+        } else { // If the button is a number or decimal point.
+            button.setBackground(grey); // Set the button background to grey.
+            button.setForeground(Color.WHITE); // Set the button text color to white.
+        }
+        return button;
     }
 }
