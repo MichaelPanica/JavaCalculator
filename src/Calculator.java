@@ -29,6 +29,10 @@ public class Calculator {
     JLabel displayLabel = new JLabel();
     JPanel displayPanel = new JPanel();
     JPanel buttonsPanel = new JPanel();
+    // A+B, A-B, A*B, A/B
+    String A = "0";
+    String operator = null;
+    String B = null;
 
     Calculator(){
         frame.setVisible(true); // Sets the visibility to True, so that the app can be seen.
@@ -78,6 +82,43 @@ public class Calculator {
             button.setBackground(grey); // Set the button background to grey.
             button.setForeground(Color.WHITE); // Set the button text color to white.
         }
-        return button;
+        buttonsPanel.add(button);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JButton button = (JButton) e.getSource();
+                String buttonValue = button.getText();
+                if(Arrays.asList(rightSymbols).contains(buttonValue)){
+
+                } else if (Arrays.asList(topSymbols).contains(buttonValue)){
+                    if (buttonValue == "AC"){
+                        clearAll();
+                        displayLabel.setText("0");
+                    } else if (buttonValue == "+/-"){
+                        double numDisplay = Double.parseDouble(displayLabel.getText());
+                        numDisplay *= -1;
+                        displayLabel.setText(Double.toString(numDisplay));
+                    } else if (buttonValue == "="){
+
+                    }
+                } else {
+                    if (buttonValue == "."){
+                        if(!displayLabel.getText().contains(buttonValue)){
+                            displayLabel.setText(displayLabel.getText() + buttonValue);
+                        }
+                    } else if ("0123456789".contains(buttonValue)){
+                        if (displayLabel.getText() == "0"){
+                            displayLabel.setText(buttonValue);
+                        } else {
+                            displayLabel.setText(displayLabel.getText() + buttonValue);
+                        }
+                    }
+                }
+            }
+        }); return button;
+    }
+    void clearAll(){
+        A = "0";
+        operator = null;
+        B = null;
     }
 }
